@@ -7,4 +7,12 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :votes
   has_many :comments
+
+  def upvote thing
+    v = votes.create! voteable: thing, status: true
+  end
+
+  def downvote thing
+    v = votes.create! voteable: thing, status: false
+  end
 end

@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  validate_presence_of :body, :user_id
+  validates_presence_of :body, :user_id
 
   has_many :votes, as: :voteable
   belongs_to :user
