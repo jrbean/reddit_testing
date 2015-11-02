@@ -1,4 +1,4 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -7,7 +7,7 @@ class PostController < ApplicationController
 
   def create
     @post = current_user.posts.create!(post_params)
-    redirect_to @post
+    redirect_to '/'
   end
 
   def new

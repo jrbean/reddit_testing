@@ -4,13 +4,15 @@ Rails.application.routes.draw do
     resources :votes, only: [:create, :edit, :destroy]
   end
 
-  post 'post/create'
+  resources :comments
 
-  get 'post/destroy'
-
-  get 'post/edit'
-
-  get 'post/new'
+  # post 'post/create'
+  #
+  # get 'post/destroy'
+  #
+  # get 'post/edit'
+  #
+  # get 'post/new'
 
   get 'vote/create'
 
@@ -18,9 +20,11 @@ Rails.application.routes.draw do
 
   get 'vote/edit'
 
+  get 'users/profile'
+
   devise_for :users
 
-root to: "post#index"
+root to: "posts#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,23 @@
+<table class="table">
+  <tr>
+    <th>
+      <%= form_for(@post) do |f| %>
+        <%= f.submit "⬆︎", class: "btn btn-link", data: {method: 'DELETE'} %>
+        <% end %>
+        <%= @post.vote_count %>⬇︎ <h3><%= @post.title %></h3><th>
+  </tr>
+<br>
+  <tr>
+    <td><%= @post.body %></td>
+  </tr>
+<br>
+<tr>
+  <td><%= link_to "Reply", new_comment_path %></td>
+  <% if current_user.id == @post.user_id %>
+    <td><%= form_for(@post) do |f| %>
+      <%= f.submit "Delete", class: "btn btn-primary btn-xs", data: {method: 'DELETE'} %>
+      <% end %></td>
+    </form>
+  <% end %>
+</tr>
+</table>
