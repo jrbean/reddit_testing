@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.create!(comment_params)
-    redirect_to :back
+    redirect_to "/posts/"
   end
 
   def new
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body, :commentable_type)
     end
-end
+
 end
