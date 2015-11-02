@@ -9,5 +9,6 @@ class Post < ActiveRecord::Base
     uc = self.votes.where(status: true).count
     dc = self.votes.where(status: false).count
     uc - dc
-  end
+  end    
+
 end

@@ -1,10 +1,11 @@
 <table class="table">
   <tr>
     <th>
-      <%= form_for(@post) do |f| %>
-        <%= f.submit "⬆︎", class: "btn btn-link", data: {method: 'post'} %>
-        <% end %>
-        <%= @post.vote_count %>⬇︎ <h3><%= @post.title %></h3><th>
+        <%= link_to "⬆︎", post_votes_path(@post), status: :true, method: 'post' %>
+        <%= @post.vote_count %>
+        <%= link_to "⬇︎", post_votes_path(@post), status: :false, method: 'post' %>
+        <h3><%= @post.title %></h3>
+    </th>
   </tr>
 <br>
   <tr>
@@ -15,7 +16,7 @@
   <td><%= link_to "Reply", new_comment_path %></td>
   <% if current_user.id == @post.user_id %>
     <td><%= form_for(@post) do |f| %>
-      <%= f.submit "Delete", class: "btn btn-primary btn-xs", data: {method: 'DELETE'} %>
+      <%= f.submit "Delete", class: "btn btn-primary btn-xs", method: 'DELETE', data: { confirm: "You sure?" } %>
       <% end %></td>
     </form>
   <% end %>
