@@ -1,0 +1,5 @@
+<h2>Posts by you, User #<%= current_user.id %></h2>
+<small>You'll be known as User #<%= current_user.id %> for now, because usernames are hard and we don't want to publicize emails now, do we?</small>
+<% current_user.posts.each do |p| %>
+  <li><%= link_to p.title, p %> <%= time_ago_in_words(p.created_at) %> ago</li>
+<% end %>

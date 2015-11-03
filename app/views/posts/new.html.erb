@@ -1,7 +1,5 @@
 <%= form_for(@post) do |f| %>
-  <div class="form-group">
-    <%= f.text_field :title, placeholder: "Title" %><br><br>
-    <%= f.text_area :body, placeholder: "Create a new Post", rows: 10 %>
-  </div>
+    <%= f.text_field :title, placeholder: "Title", class: "form-control" %><br><br>
+    <%= f.text_area :body, placeholder: "Create a new Post", class: "form-control", rows: 10 %><br/>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

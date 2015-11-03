@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   resources :posts do
-    resources :votes, only: [:create, :edit, :destroy]
+    resources :votes, only: [:create]
   end
 
-  resources :comments
+  resources :posts do
+    resources :comments
+  end
 
   get 'users/profile'
 

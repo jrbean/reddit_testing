@@ -9,10 +9,30 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def upvote thing
-    v = votes.create! voteable: thing, status: true
+    v = thing.votes.find_by(user: self)
+    if v
+      if (v.status == true)
+        v.status = nil
+      else
+        v.status = true
+      end
+    else
+      v = votes.new voteable: thing, status: true
+    end
+    v.save!
   end
 
   def downvote thing
-    v = votes.create! voteable: thing, status: false
+    v = thing.votes.find_by(user: self)
+    if v
+      if (v.status == false)
+        v.status = nil
+      else
+        v.status = false
+      end
+    else
+      v = votes.new voteable: thing, status: false
+    end
+    v.save!
   end
 end

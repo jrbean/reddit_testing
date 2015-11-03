@@ -1,7 +1,4 @@
-<%= form_for(@comment) do |f| %>
-  <div class="form-group">
-    <%= f.text_area :body, placeholder: "Compose a reply.", rows: 10 %>
-    <% f.hidden_field :commentable_type, :value => "post" %>
-  </div>
+<%= form_for [@post, @comment] do |f| %>
+    <%= f.text_area :body, placeholder: "Compose a reply.", class: "form-control", rows: 10 %><br/>
   <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>
